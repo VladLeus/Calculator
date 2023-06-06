@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Calculator
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private List<string[]> previousInput = new List<string[]>();
@@ -340,7 +337,7 @@ namespace Calculator
 
         private void Pi_Click(object sender, RoutedEventArgs e)
         {
-            if (supp_input.Text.Length == 0)
+            if (supp_input.Text.Length == 0 && !IsResulting )
             {
                 supp_input.Text += "π "; 
             }
@@ -348,7 +345,7 @@ namespace Calculator
 
         private void Exp_Click(object sender, RoutedEventArgs e)
         {
-            if (supp_input.Text.Length == 0)
+            if (supp_input.Text.Length == 0 && !IsResulting)
             {
                 supp_input.Text += "e "; 
             }
@@ -356,7 +353,7 @@ namespace Calculator
 
         private void sqrt_Click(object sender, RoutedEventArgs e)
         {
-            if (supp_input.Text.Length == 0)
+            if (supp_input.Text.Length == 0 && !IsResulting)
             {
                 supp_input.Text = "√";
                 currOperation = "sqrt";
@@ -373,12 +370,13 @@ namespace Calculator
                 supp_input.Text += "^x";
                 currOperation = "pow";
                 IsSpecialSymbolPressed = true; 
+                IsResulting= false;
             }
         }
 
         private void log_nat_Click(object sender, RoutedEventArgs e)
         {
-            if (supp_input.Text.Length == 0)
+            if (supp_input.Text.Length == 0 && !IsResulting)
             {
                 supp_input.Text += "ln(x)";
                 currOperation = "log";
